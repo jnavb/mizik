@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ title$ | async }}</ion-title>
+    <ion-back-button
+      slot="start"
+      defaultHref="home/tab1"
+      text="Discover"
+    ></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="(result$ | async) as result">
+    <ng-container *ngIf="result.data">
+      <ng-container *ngFor="let view of result.data">
+        <app-item-list [view]="view"></app-item-list>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="result.error"> </ng-container>
+
+    <ng-container *ngIf="result.loading">
+      <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    </ng-container>
+  </ng-container>
+</ion-content>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
-import { Root } from '../graphql/types';
-
-export type GqlResult<T extends keyof Root> = Pick<Root, T>;
+import { NavController } from '@ionic/angular';
+import { Entities } from '../models/util-types';
 
 @Component({
   selector: 'app-tab1',
@@ -10,35 +8,21 @@ export type GqlResult<T extends keyof Root> = Pick<Root, T>;
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  entities = Entities;
   slideOpts = {
     slidesPerView: 'auto',
     slidesPerGroup: 1,
-    spaceBetween: 8,
+    spaceBetween: 0,
     freeMode: true,
     slidesOffsetBefore: 1,
     slidesOffsetAfter: 1
   };
 
-  constructor(private apollo: Apollo) {}
+  constructor(private nav: NavController) {}
 
-  ngOnInit() {
-    this.apollo
-      .watchQuery<GqlResult<'allFilms'>>({
-        query: gql`
-          {
-            allFilms {
-              films {
-                title
-              }
-            }
-          }
-        `
-      })
-      .valueChanges.subscribe(result => {
-        console.log(result.data);
-        // this.rates = result?.data?.rates;
-        // this.loading = result.loading;
-        // this.error = result.error;
-      });
+  ngOnInit() {}
+
+  onEntityList(entity: Entities) {
+    this.nav.navigateForward([entity, 'list']);
   }
 }

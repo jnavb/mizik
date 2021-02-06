@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title></ion-title>
+    <ion-title>Discover</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,26 +25,26 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        <ion-card>
+        <ion-card (click)="onEntityList(entities.FILMS)">
           <ion-card-header>
             <ion-card-subtitle>Episode VII, Epi...</ion-card-subtitle>
             <ion-card-title>Movies</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/movies.png" />
+            <img src="assets/icon/movies.png" alt="movies" />
           </ion-card-content>
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card>
+        <ion-card (click)="onEntityList(entities.PEOPLE)">
           <ion-card-header>
             <ion-card-subtitle>Yoda, Jar Jar...</ion-card-subtitle>
             <ion-card-title>Characters</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/characters.png" />
+            <img src="assets/icon/characters.png" alt="characters" />
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -64,46 +64,46 @@
 
     <ion-slides pager="false" [options]="slideOpts">
       <ion-slide>
-        <ion-card>
+        <ion-card (click)="onEntityList(entities.SPECIES)">
           <ion-card-header>
             <ion-card-title>Species</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/species.png" />
+            <img src="assets/icon/species.png" alt="species" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
       <ion-slide>
-        <ion-card>
+        <ion-card (click)="onEntityList(entities.VEHICLES)">
           <ion-card-header>
             <ion-card-title>Vehicles</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/vehicles.png" />
+            <img src="assets/icon/vehicles.png" alt="vehicles" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
       <ion-slide>
-        <ion-card>
+        <ion-card (click)="onEntityList(entities.STARSHIPS)">
           <ion-card-header>
             <ion-card-title>Starships</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/starships.png" />
+            <img src="assets/icon/starships.png" alt="starships" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
       <ion-slide>
-        <ion-card>
+        <ion-card (click)="onEntityList(entities.PLANETS)">
           <ion-card-header>
             <ion-card-title>Planets</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/planets.png" />
+            <img src="assets/icon/planets.png" alt="planets" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
