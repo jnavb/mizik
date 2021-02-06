@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Discover</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar
+        placeholder="Planets, vehicles, species..."
+        inputmode="numeric"
+        debounce="500"
+        animated
+      >
+      </ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- First row -->
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Episode VII, Epi...</ion-card-subtitle>
+            <ion-card-title>Movies</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/icon/movies.png" />
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Yoda, Jar Jar...</ion-card-subtitle>
+            <ion-card-title>Characters</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/icon/characters.png" />
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>¿Did you know that?</ion-card-subtitle>
+        <ion-card-title>Trivia</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Keep close to Nature's heart... and break clear away, once in awhile,
+        and climb.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-slides pager="false" [options]="slideOpts">
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Species</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/icon/species.png" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Vehicles</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/icon/vehicles.png" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Starships</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/icon/starships.png" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Planets</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <img src="assets/icon/planets.png" />
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Learn and Share</ion-card-subtitle>
+        <ion-card-title>¡Hundreds of entries!</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Look inside Star Wars database and find what you are looking for and
+        share it with your friends
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>
