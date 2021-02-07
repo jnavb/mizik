@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { QUERIES } from 'src/app/models/graphql-queries';
 import { WatchQueryResponse } from 'src/app/models/graphql-types';
-import { planetsToItemList } from 'src/app/utils/mappers';
+import { planetsToItemList, planetToItemDetail } from 'src/app/utils/mappers';
 import { ApolloWrapper } from '../apollo-wrapper';
 import { FetchEntityService } from './fetcher-factory';
 
@@ -23,7 +23,23 @@ export class PlanetsFetcher implements FetchEntityService {
 
   private getList() {
     return this.apollo.watchQuery<WatchQueryResponse<'allPlanets'>>(
-      QUERIES.LIST.PLANETS
+      QUERIES.list.planets
+    );
+  }
+
+  getDetailView(id: string) {
+    return this.getDetail(id).pipe(
+      map(result => ({
+        ...result,
+        data: result.data.planet ? planetToItemDetail(result.data.planet) : null
+      }))
+    );
+  }
+
+  private getDetail(id: string) {
+    return this.apollo.watchQuery<WatchQueryResponse<'planet'>>(
+      QUERIES.detail.planets,
+      id
     );
   }
 }

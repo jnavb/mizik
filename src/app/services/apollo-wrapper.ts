@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ApolloQueryResult,
   DocumentNode,
+  gql,
   NetworkStatus
 } from '@apollo/client/core';
 import { Apollo } from 'apollo-angular';
@@ -19,11 +20,12 @@ export class ApolloWrapper {
 
   constructor(private apollo: Apollo) {}
 
-  watchQuery<T>(query: DocumentNode) {
+  watchQuery<T>(query: DocumentNode, id?: string) {
     return concat(
       of(this.initialState as ApolloQueryResult<T>),
       this.apollo.watchQuery<T>({
-        query
+        query,
+        variables: { id }
       }).valueChanges
     );
   }

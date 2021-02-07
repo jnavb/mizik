@@ -1,9 +1,9 @@
 export type Nullable<T> = T | null;
 export enum Entities {
-  PEOPLE = 'PEOPLE',
-  FILMS = 'FILMS',
-  PLANETS = 'PLANETS',
-  SPECIES = 'SPECIES',
-  STARSHIPS = 'STARSHIPS',
-  VEHICLES = 'VEHICLES'
+  PEOPLE = 'people',
+  FILMS = 'films',
+  PLANETS = 'planets',
+  SPECIES = 'species',
+  STARSHIPS = 'starships',
+  VEHICLES = 'vehicles'
 }

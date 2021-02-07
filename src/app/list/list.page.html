@@ -3,7 +3,7 @@
     <ion-title>{{ title$ | async }}</ion-title>
     <ion-back-button
       slot="start"
-      defaultHref="home/tab1"
+      defaultHref="home"
       text="Discover"
     ></ion-back-button>
   </ion-toolbar>
@@ -13,11 +13,16 @@
   <ng-container *ngIf="(result$ | async) as result">
     <ng-container *ngIf="result.data">
       <ng-container *ngFor="let view of result.data">
-        <app-item-list [view]="view"></app-item-list>
+        <app-item-list
+          [view]="view"
+          (click)="onDetail(view.id)"
+        ></app-item-list>
       </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="result.error"> </ng-container>
+    <ng-container *ngIf="result.error">
+      <h1>Oopsie, try again later</h1>
+    </ng-container>
 
     <ng-container *ngIf="result.loading">
       <ion-progress-bar type="indeterminate"></ion-progress-bar>

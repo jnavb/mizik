@@ -32,7 +32,7 @@
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/movies.png" alt="movies" />
+            <img src="assets/entities/movies.png" alt="movies" />
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -44,33 +44,26 @@
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/characters.png" alt="characters" />
+            <img src="assets/entities/people.png" alt="people" />
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>¿Did you know that?</ion-card-subtitle>
-        <ion-card-title>Trivia</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb.
-      </ion-card-content>
-    </ion-card>
+    <mizik-card-flip></mizik-card-flip>
 
     <ion-slides pager="false" [options]="slideOpts">
       <ion-slide>
-        <ion-card (click)="onEntityList(entities.SPECIES)">
+        <ion-card
+          style="margin-left: 0"
+          (click)="onEntityList(entities.SPECIES)"
+        >
           <ion-card-header>
             <ion-card-title>Species</ion-card-title>
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/species.png" alt="species" />
+            <img src="assets/entities/species.png" alt="species" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -81,7 +74,7 @@
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/vehicles.png" alt="vehicles" />
+            <img src="assets/entities/vehicles.png" alt="vehicles" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -92,7 +85,7 @@
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/starships.png" alt="starships" />
+            <img src="assets/entities/starships.png" alt="starships" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -103,7 +96,7 @@
           </ion-card-header>
 
           <ion-card-content>
-            <img src="assets/icon/planets.png" alt="planets" />
+            <img src="assets/entities/planets.png" alt="planets" />
           </ion-card-content>
         </ion-card>
       </ion-slide>
@@ -116,8 +109,8 @@
       </ion-card-header>
 
       <ion-card-content>
-        Look inside Star Wars database and find what you are looking for and
-        share it with your friends
+        Look inside Star Wars database, find what you are looking for and share
+        it with your friends
       </ion-card-content>
     </ion-card>
   </ion-grid>

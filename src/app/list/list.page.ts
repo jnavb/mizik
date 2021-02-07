@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApolloQueryResult } from '@apollo/client/core';
+import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ItemListView } from '../item-list/item-list.component';
@@ -23,7 +24,8 @@ export class ListPage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private entityFactory: FetcherFactory
+    private entityFactory: FetcherFactory,
+    private nav: NavController
   ) {}
 
   ngOnInit() {
@@ -36,5 +38,10 @@ export class ListPage implements OnInit {
     this.result$ = onParamsChange$.pipe(
       switchMap(entity => this.entityFactory.getListView(entity))
     );
+  }
+
+  onDetail(id: string) {
+    const entity = this.activatedRoute.snapshot.params?.entity;
+    this.nav.navigateForward([entity, id]);
   }
 }

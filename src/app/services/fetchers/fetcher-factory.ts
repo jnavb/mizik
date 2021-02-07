@@ -9,9 +9,11 @@ import { SepeciesFetcher } from './species-fetcher';
 import { VehiclesFetcher } from './vehicles-fetcher';
 import { PlanetsFetcher } from './planets-fetcher';
 import { StarshipsFetcher } from './starships-fetcher';
+import { ItemDetail } from 'src/app/detail/detail.page';
 
 export interface FetchEntityService {
   getListView(): Observable<ApolloQueryResult<ItemList[]>>;
+  getDetailView(id: string): Observable<ApolloQueryResult<ItemDetail>>;
 }
 
 @Injectable({
@@ -29,6 +31,10 @@ export class FetcherFactory {
 
   getListView(entity: Entities) {
     return this.getFetcher(entity).getListView();
+  }
+
+  getDetailView({ entity, id }: { entity: Entities; id: string }) {
+    return this.getFetcher(entity).getDetailView(id);
   }
 
   private getFetcher(entity: Entities): FetchEntityService {

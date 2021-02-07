@@ -1,0 +1,33 @@
+:host {
+  --cs: 30px;
+  --br: 10px;
+}
+
+.card {
+  position: relative;
+  margin: 10px;
+  max-height: 200px;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cs)) 0,
+    100% var(--cs),
+    100% 100%,
+    0 100%
+  );
+
+  ion-card-title {
+    font-size: 20px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: var(--cs);
+    height: var(--cs);
+    background-color: var(--ion-color-warning);
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: var(--br);
+  }
+}

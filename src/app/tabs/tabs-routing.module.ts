@@ -8,19 +8,25 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'home',
         loadChildren: () =>
           import('../home/tab1.module').then(m => m.Tab1PageModule)
       },
       {
-        path: 'tab2',
+        path: 'favorites',
         loadChildren: () =>
           import('../favorites/tab2.module').then(m => m.Tab2PageModule)
       },
       {
-        path: '',
-        redirectTo: 'tab1',
-        pathMatch: 'full'
+        path: ':entity/list',
+        loadChildren: () =>
+          import('../list/list.module').then(m => m.ListPageModule)
+      },
+      {
+        path: ':entity/:id',
+        data: { noReuse: true },
+        loadChildren: () =>
+          import('../detail/detail.module').then(m => m.DetailPageModule)
       }
     ]
   }

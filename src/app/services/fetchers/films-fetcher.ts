@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { QUERIES } from 'src/app/models/graphql-queries';
 import { WatchQueryResponse } from 'src/app/models/graphql-types';
-import { filmToItemList } from 'src/app/utils/mappers';
+import { filmToItemDetail, filmToItemList } from 'src/app/utils/mappers';
 import { ApolloWrapper } from '../apollo-wrapper';
 import { FetchEntityService } from './fetcher-factory';
 
@@ -23,7 +23,23 @@ export class FilmsFetcher implements FetchEntityService {
 
   private getList() {
     return this.apollo.watchQuery<WatchQueryResponse<'allFilms'>>(
-      QUERIES.LIST.FILMS
+      QUERIES.list.films
+    );
+  }
+
+  getDetailView(id: string) {
+    return this.getDetail(id).pipe(
+      map(result => ({
+        ...result,
+        data: result.data.film ? filmToItemDetail(result.data.film) : null
+      }))
+    );
+  }
+
+  private getDetail(id: string) {
+    return this.apollo.watchQuery<WatchQueryResponse<'film'>>(
+      QUERIES.detail.films,
+      id
     );
   }
 }

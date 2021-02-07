@@ -169,6 +169,9 @@
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {
+    "@schematics/angular:component": {
+      "displayBlock": true
+    },
     "@ionic/angular-toolkit:component": {
       "styleext": "scss"
     },

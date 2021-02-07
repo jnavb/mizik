@@ -12,7 +12,7 @@ import { GraphQLModule } from './graphql.module';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot({ mode: 'ios' }),
+    IonicModule.forRoot(),
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule

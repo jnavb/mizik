@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { map, tap } from 'rxjs/operators';
 import { QUERIES } from 'src/app/models/graphql-queries';
 import { WatchQueryResponse } from 'src/app/models/graphql-types';
-import { specieToItemList } from 'src/app/utils/mappers';
+import {
+  personToItemDetail,
+  speciesToItemDetail,
+  specieToItemList
+} from 'src/app/utils/mappers';
 import { ApolloWrapper } from '../apollo-wrapper';
 import { FetchEntityService } from './fetcher-factory';
 
@@ -23,7 +27,25 @@ export class SepeciesFetcher implements FetchEntityService {
 
   private getList() {
     return this.apollo.watchQuery<WatchQueryResponse<'allSpecies'>>(
-      QUERIES.LIST.SPECIES
+      QUERIES.list.species
+    );
+  }
+
+  getDetailView(id: string) {
+    return this.getDetail(id).pipe(
+      map(result => ({
+        ...result,
+        data: result.data.species
+          ? speciesToItemDetail(result.data.species)
+          : null
+      }))
+    );
+  }
+
+  private getDetail(id: string) {
+    return this.apollo.watchQuery<WatchQueryResponse<'species'>>(
+      QUERIES.detail.species,
+      id
     );
   }
 }

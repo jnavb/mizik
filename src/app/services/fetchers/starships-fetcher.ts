@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { QUERIES } from 'src/app/models/graphql-queries';
 import { WatchQueryResponse } from 'src/app/models/graphql-types';
-import { starshipToItemList } from 'src/app/utils/mappers';
+import {
+  starshipToItemDetail,
+  starshipToItemList
+} from 'src/app/utils/mappers';
 import { ApolloWrapper } from '../apollo-wrapper';
 import { FetchEntityService } from './fetcher-factory';
 
@@ -23,7 +26,25 @@ export class StarshipsFetcher implements FetchEntityService {
 
   private getList() {
     return this.apollo.watchQuery<WatchQueryResponse<'allStarships'>>(
-      QUERIES.LIST.STARSHIPS
+      QUERIES.list.starships
+    );
+  }
+
+  getDetailView(id: string) {
+    return this.getDetail(id).pipe(
+      map(result => ({
+        ...result,
+        data: result.data.starship
+          ? starshipToItemDetail(result.data.starship)
+          : null
+      }))
+    );
+  }
+
+  private getDetail(id: string) {
+    return this.apollo.watchQuery<WatchQueryResponse<'starship'>>(
+      QUERIES.detail.starships,
+      id
     );
   }
 }
