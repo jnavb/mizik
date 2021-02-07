@@ -1,11 +1,25 @@
-<ion-card class="card">
-  <ion-card-header>
-    <ion-card-subtitle>Tap to know the answer</ion-card-subtitle>
-    <ion-card-title>Question</ion-card-title>
-  </ion-card-header>
+<div class="flip" [ngClass]="{ 'flip--rotate': _discover }">
+  <canvas #confettiCanvas class="confetti"></canvas>
+  <div class="flip__inner">
+    <div class="card-question flip__front folded folded--front">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Tap to know the answer</ion-card-subtitle>
+          <ion-card-title>Question</ion-card-title>
+        </ion-card-header>
 
-  <ion-card-content>
-    Keep close to Nature's heart... and break clear away, once in awhile, and
-    climb.
-  </ion-card-content>
-</ion-card>
+        <ion-card-content>
+          {{ view.question }}
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div class="card-answer flip__back folded folded--back">
+      <ion-card-subtitle class="card-answer__subtitle"
+        >The answer is...</ion-card-subtitle
+      >
+      <ion-card-title class="card-answer__title">{{
+        view.answer
+      }}</ion-card-title>
+    </div>
+  </div>
+</div>

@@ -7,3 +7,8 @@ export enum Entities {
   STARSHIPS = 'starships',
   VEHICLES = 'vehicles'
 }
+
+export interface Trivia {
+  question: string;
+  answer: string;
+}

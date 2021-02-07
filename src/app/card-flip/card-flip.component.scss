@@ -1,33 +1,104 @@
 :host {
   --cs: 30px;
   --br: 10px;
+  --answer-background: var(--ion-color-success-shade);
 }
 
-.card {
-  position: relative;
-  margin: 10px;
-  max-height: 200px;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--cs)) 0,
-    100% var(--cs),
-    100% 100%,
-    0 100%
-  );
+ion-card-title {
+  font-size: 20px;
+}
 
-  ion-card-title {
-    font-size: 20px;
+.folded {
+  position: relative;
+
+  &--back::after {
+    content: none;
   }
 
-  &::after {
+  &--front::after {
     content: '';
     position: absolute;
     display: block;
     width: var(--cs);
     height: var(--cs);
-    background-color: var(--ion-color-warning);
+    background-image: linear-gradient(
+      to left bottom,
+      black 50%,
+      var(--answer-background) 50%
+    );
     top: 0;
     right: 0;
     border-bottom-left-radius: var(--br);
   }
+}
+
+.card-question,
+.card-answer {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-question {
+  ion-card {
+    margin: 0;
+    height: 100%;
+  }
+  background-color: var(--ion-card-background);
+}
+
+.card-answer {
+  background-color: var(--answer-background);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: auto;
+  }
+
+  &__subtitle {
+    color: var(--ion-color-white);
+  }
+}
+
+.flip {
+  background-color: transparent;
+  perspective: 1000px;
+  margin: 24px 16px;
+  height: 165px;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  &--rotate &__inner {
+    transform: rotateY(180deg);
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+  }
+}
+
+.confetti {
+  position: absolute;
+  pointer-events: none;
+  z-index: 999;
+  width: 100%;
+  height: 500px;
+  top: -150px;
 }

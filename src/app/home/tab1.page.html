@@ -50,7 +50,11 @@
       </ion-col>
     </ion-row>
 
-    <mizik-card-flip></mizik-card-flip>
+    <mizik-card-flip
+      [view]="trivia$ | async"
+      [discover]="discover"
+      (click)="discover = true"
+    ></mizik-card-flip>
 
     <ion-slides pager="false" [options]="slideOpts">
       <ion-slide>
