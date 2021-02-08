@@ -8,8 +8,22 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  },
+  {
+    path: ':entity/list',
+    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: ':entity/:id',
+    data: { noReuse: true },
+    loadChildren: () =>
+      import('./detail/detail.module').then(m => m.DetailPageModule)
+  },
+  {
+    path: 'favorites',
+    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   }
 ];
 @NgModule({

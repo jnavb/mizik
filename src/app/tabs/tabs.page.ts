@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-tabs',
+  selector: 'mizik-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
   isPageInFavorites$: Observable<boolean>;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private nav: NavController) {}
 
   ngOnInit() {
     this.isPageInFavorites$ = this.router.events.pipe(
@@ -19,5 +20,13 @@ export class TabsPage {
       map(({ url }: NavigationEnd) => url),
       map(url => url.includes('favorites'))
     );
+  }
+
+  onHome() {
+    this.nav.navigateBack(['home']);
+  }
+
+  onFavorites() {
+    this.nav.navigateForward(['favorites']);
   }
 }

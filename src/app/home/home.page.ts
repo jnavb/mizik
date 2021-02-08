@@ -8,11 +8,11 @@ import { pickRandom } from '../utils/array';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
 })
-export class Tab1Page {
+export class HomePage {
   entities = Entities;
   discover = false;
   trivia$: Observable<Trivia>;
@@ -28,6 +28,7 @@ export class Tab1Page {
   constructor(private nav: NavController) {}
 
   ngOnInit() {
+    // this.nav.navigateForward(['detail-container-one']);
     this.trivia$ = of(trivias).pipe(map(trivias => pickRandom(trivias)));
   }
 
