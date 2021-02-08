@@ -1,7 +1,10 @@
 <div class="flip" [ngClass]="{ 'flip--rotate': _discover }">
   <canvas #confettiCanvas class="confetti"></canvas>
   <div class="flip__inner">
-    <div class="card-question flip__front folded folded--front">
+    <div
+      class="card-question flip__front folded folded--front"
+      (click)="onFront()"
+    >
       <ion-card>
         <ion-card-header>
           <ion-card-subtitle>Tap to know the answer</ion-card-subtitle>
@@ -14,9 +17,12 @@
       </ion-card>
     </div>
     <div class="card-answer flip__back folded folded--back">
-      <ion-card-subtitle class="card-answer__subtitle"
-        >The answer is...</ion-card-subtitle
-      >
+      <div class="card-answer__subtitle-box">
+        <ion-card-subtitle class="card-answer__subtitle"
+          >The answer is...</ion-card-subtitle
+        >
+        <ion-icon (click)="onFlipAgain()" name="repeat-outline"></ion-icon>
+      </div>
       <ion-card-title class="card-answer__title">{{
         view.answer
       }}</ion-card-title>

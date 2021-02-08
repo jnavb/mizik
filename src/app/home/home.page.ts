@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { delay, map, repeatWhen } from 'rxjs/operators';
 import { trivias } from 'src/assets/info/trivia';
 import { Entities, Trivia } from '../models/util-types';
 import { pickRandom } from '../utils/array';
@@ -16,6 +16,7 @@ export class HomePage {
   entities = Entities;
   discover = false;
   trivia$: Observable<Trivia>;
+  repeat$ = new Subject();
   slideOpts = {
     slidesPerView: 'auto',
     slidesPerGroup: 1,
@@ -28,8 +29,22 @@ export class HomePage {
   constructor(private nav: NavController) {}
 
   ngOnInit() {
-    // this.nav.navigateForward(['detail-container-one']);
-    this.trivia$ = of(trivias).pipe(map(trivias => pickRandom(trivias)));
+    this.trivia$ = of(trivias).pipe(
+      delay(200),
+      repeatWhen(() => this.repeat$),
+      map(trivias => pickRandom(trivias))
+    );
+  }
+
+  onFront() {
+    if (!this.discover) {
+      this.discover = true;
+    }
+  }
+
+  onRepeat() {
+    this.discover = false;
+    this.repeat$.next();
   }
 
   onEntityList(entity: Entities) {

@@ -58,6 +58,17 @@ ion-card-title {
     margin: auto;
   }
 
+  &__subtitle-box {
+    display: flex;
+    justify-content: space-between;
+
+    ion-icon {
+      font-size: 30px;
+      margin-top: -14px;
+      margin-right: -7px;
+    }
+  }
+
   &__subtitle {
     color: var(--ion-color-white);
   }

@@ -51,9 +51,11 @@
     </ion-row>
 
     <mizik-card-flip
-      [view]="trivia$ | async"
+      *ngIf="trivia$ | async as trivia"
+      [view]="trivia"
       [discover]="discover"
-      (click)="discover = true"
+      (front)="onFront()"
+      (repeat)="onRepeat()"
     ></mizik-card-flip>
 
     <ion-slides pager="false" [options]="slideOpts">
