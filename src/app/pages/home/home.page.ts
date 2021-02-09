@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { of, Subject } from 'rxjs';
 import { delay, map, repeatWhen } from 'rxjs/operators';
-import { trivias } from 'src/assets/info/trivia';
-import { Entities, Trivia } from '../models/util-types';
-import { pickRandom } from '../utils/array';
+import { trivias } from 'src/app/data/trivia';
+import { Entities, Trivia } from '../../models/util-types';
+import { pickRandom } from '../../utils/array';
 import { Observable } from 'rxjs';
 
 @Component({

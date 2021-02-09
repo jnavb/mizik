@@ -4,19 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetailPageRoutingModule } from './detail-routing.module';
+import { ListPageRoutingModule } from './list-routing.module';
 
-import { DetailPage } from './detail.page';
-import { ComponentsModule } from '../components/components.module';
+import { ListPage } from './list.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailPageRoutingModule,
+    ListPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [DetailPage]
+  declarations: [ListPage]
 })
-export class DetailPageModule {}
+export class ListPageModule {}

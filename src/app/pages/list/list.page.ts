@@ -4,10 +4,10 @@ import { ApolloQueryResult } from '@apollo/client/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map, mapTo, switchMap } from 'rxjs/operators';
-import { ItemListView } from '../item-list/item-list.component';
-import { Entities } from '../models/util-types';
-import { FetcherFactory } from '../services/fetchers/fetcher-factory';
-import { capitalize } from '../utils/string';
+import { ItemListView } from '../../components/item-list/item-list.component';
+import { Entities } from '../../models/util-types';
+import { FetcherFactory } from '../../services/fetchers/fetcher-factory';
+import { capitalize } from '../../utils/string';
 
 export interface ItemList extends ItemListView {
   id: string;

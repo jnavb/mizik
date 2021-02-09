@@ -1,6 +1,6 @@
 import { entitiesWithImg } from '../data/detail-img';
-import { ItemDetail } from '../detail/detail.page';
-import { ItemList } from '../list/list.page';
+import { ItemDetail } from '../pages/detail/detail.page';
+import { ItemList } from '../pages/list/list.page';
 import {
   Film,
   Person,

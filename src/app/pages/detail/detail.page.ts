@@ -4,9 +4,9 @@ import { ApolloQueryResult } from '@apollo/client/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { Entities } from '../models/util-types';
-import { FetcherFactory } from '../services/fetchers/fetcher-factory';
-import { capitalize } from '../utils/string';
+import { Entities } from '../../models/util-types';
+import { FetcherFactory } from '../../services/fetchers/fetcher-factory';
+import { capitalize } from '../../utils/string';
 
 export interface ItemDetail {
   id: string;

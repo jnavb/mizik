@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { ApolloQueryResult } from '@apollo/client/core';
 import { Observable } from 'rxjs';
 import { Entities } from 'src/app/models/util-types';
-import { ItemList } from '../../list/list.page';
+import { ItemList } from '../../pages/list/list.page';
 import { FilmsFetcher } from './films-fetcher';
 import { PeopleFetcher } from './people-fetcher';
 import { SepeciesFetcher } from './species-fetcher';
 import { VehiclesFetcher } from './vehicles-fetcher';
 import { PlanetsFetcher } from './planets-fetcher';
 import { StarshipsFetcher } from './starships-fetcher';
-import { ItemDetail } from 'src/app/detail/detail.page';
+import { ItemDetail } from 'src/app/pages/detail/detail.page';
 
 export interface FetchEntityService {
   getListView(): Observable<ApolloQueryResult<ItemList[]>>;

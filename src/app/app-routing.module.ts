@@ -9,21 +9,26 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    loadChildren: () =>
+      import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: ':entity/list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    loadChildren: () =>
+      import('./pages/list/list.module').then(m => m.ListPageModule)
   },
   {
     path: ':entity/:id',
     data: { noReuse: true },
     loadChildren: () =>
-      import('./detail/detail.module').then(m => m.DetailPageModule)
+      import('./pages/detail/detail.module').then(m => m.DetailPageModule)
   },
   {
     path: 'favorites',
-    loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
+    loadChildren: () =>
+      import('./pages/favorites/favorites.module').then(
+        m => m.FavoritesPageModule
+      )
   }
 ];
 @NgModule({
