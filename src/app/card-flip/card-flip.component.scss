@@ -23,7 +23,7 @@ ion-card-title {
     height: var(--cs);
     background-image: linear-gradient(
       to left bottom,
-      black 50%,
+      var(--ion-background-color) 50%,
       var(--answer-background) 50%
     );
     top: 0;

@@ -1,15 +1,16 @@
 import { TitleCasePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
+import { Entities } from '../models/util-types';
 
 @Pipe({
-  name: 'customTitlecase'
+  name: 'entityTitlecase'
 })
-export class CustomTitlecasePipe implements PipeTransform {
+export class EntityTitlecasePipe implements PipeTransform {
   constructor(private titlecase: TitleCasePipe) {}
 
-  transform(value: string): string {
+  transform(value: string, entity?: Entities): string {
     // If it is a robot, make title case as uppercase
-    if (value.includes('-')) {
+    if (value.includes('-') && entity === Entities.PEOPLE) {
       return value.toUpperCase();
     }
 

@@ -4,7 +4,7 @@
     <ion-back-button
       slot="start"
       defaultHref="home"
-      text="Discover"
+      [text]="back$ | async"
     ></ion-back-button>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,10 @@
     <ng-container *ngIf="result.data">
       <ng-container *ngFor="let view of result.data">
         <app-item-list
-          [view]="view"
+          [view]="{
+            title: view.title | entityTitlecase:view.entity,
+            subtitle: view.subtitle
+          }"
           (click)="onDetail(view.id)"
         ></app-item-list>
       </ng-container>

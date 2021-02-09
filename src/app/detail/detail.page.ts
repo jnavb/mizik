@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApolloQueryResult } from '@apollo/client/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Entities } from '../models/util-types';
@@ -36,7 +36,8 @@ export class DetailPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private entityFactory: FetcherFactory,
-    private nav: NavController
+    private nav: NavController,
+    private platform: Platform
   ) {}
 
   ngOnInit() {
@@ -45,7 +46,10 @@ export class DetailPage implements OnInit {
       filter(({ entity, id }) => Boolean(entity) && Boolean(id))
     );
 
-    this.back$ = onParamsChange$.pipe(map(({ entity }) => capitalize(entity)));
+    this.back$ = onParamsChange$.pipe(
+      filter(() => this.platform.is('ios')),
+      map(({ entity }) => capitalize(entity))
+    );
     this.result$ = onParamsChange$.pipe(
       switchMap(({ entity, id }) =>
         this.entityFactory.getDetailView({ entity, id })

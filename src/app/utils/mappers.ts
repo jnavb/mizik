@@ -23,6 +23,7 @@ enum Episode {
 export const personToItemList = ({ id, name, homeworld }: Person): ItemList => {
   return {
     id,
+    entity: Entities.PEOPLE,
     title: name,
     subtitle: homeworld.name
   };
@@ -122,6 +123,7 @@ export const personToItemDetail = ({
 export const filmToItemList = ({ id, title, director }: Film): ItemList => {
   return {
     id,
+    entity: Entities.FILMS,
     title,
     subtitle: director
   };
@@ -286,6 +288,7 @@ export const planetToItemDetail = ({
 export const planetsToItemList = ({ id, name, terrains }: Planet): ItemList => {
   return {
     id,
+    entity: Entities.PLANETS,
     title: name,
     subtitle: (terrains ?? []).slice(0, 3).join(', ')
   };
@@ -366,6 +369,7 @@ export const specieToItemList = ({
 }: Species): ItemList => {
   return {
     id,
+    entity: Entities.SPECIES,
     title: name,
     subtitle: classification
   };
@@ -374,6 +378,7 @@ export const specieToItemList = ({
 export const starshipToItemList = ({ id, name, model }: Starship): ItemList => {
   return {
     id,
+    entity: Entities.STARSHIPS,
     title: name,
     subtitle: model
   };
@@ -450,6 +455,7 @@ export const starshipToItemDetail = ({
 export const vehicleToItemList = ({ id, name, model }: Vehicle): ItemList => {
   return {
     id,
+    entity: Entities.VEHICLES,
     title: name,
     subtitle: model
   };
