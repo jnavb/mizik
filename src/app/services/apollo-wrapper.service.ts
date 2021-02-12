@@ -11,7 +11,7 @@ import { concat, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApolloWrapper {
+export class ApolloWrapperService {
   private initialState: ApolloQueryResult<unknown> = {
     data: {},
     loading: true,

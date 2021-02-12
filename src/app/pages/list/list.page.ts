@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApolloQueryResult } from '@apollo/client/core';
-import { NavController, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map, mapTo, switchMap } from 'rxjs/operators';
+import { QParams } from 'src/app/models/routing';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { ItemListView } from '../../components/item-list/item-list.component';
 import { Entities } from '../../models/util-types';
 import { FetcherFactory } from '../../services/fetchers/fetcher-factory';
@@ -27,7 +29,7 @@ export class ListPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private entityFactory: FetcherFactory,
-    private nav: NavController,
+    private nav: NavigationService,
     private platform: Platform
   ) {}
 
@@ -48,7 +50,7 @@ export class ListPage implements OnInit {
   }
 
   onDetail(id: string) {
-    const entity = this.activatedRoute.snapshot.params?.entity;
+    const entity = (this.activatedRoute.snapshot.params as QParams)?.entity;
     this.nav.navigateForward([entity, id]);
   }
 }

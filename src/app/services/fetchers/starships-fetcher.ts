@@ -6,14 +6,14 @@ import {
   starshipToItemDetail,
   starshipToItemList
 } from 'src/app/utils/mappers';
-import { ApolloWrapper } from '../apollo-wrapper';
+import { ApolloWrapperService } from '../apollo-wrapper.service';
 import { FetchEntityService } from './fetcher-factory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StarshipsFetcher implements FetchEntityService {
-  constructor(private apollo: ApolloWrapper) {}
+  constructor(private apollo: ApolloWrapperService) {}
 
   getListView() {
     return this.getList().pipe(

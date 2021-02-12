@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MakeProvider } from 'src/app/utils/custom-ngmodel';
 @Component({
   selector: 'mizik-fab-love',
   templateUrl: './fab-love.component.html',
   styleUrls: ['./fab-love.component.scss'],
+  providers: [MakeProvider(FabLoveComponent)]
 })
-export class FabLoveComponent implements OnInit {
+export class FabLoveComponent {
+  @Input() activated = false;
+  @Input() icon: string;
+  @Input() closeIcon: string;
+  @Input() color: string;
 
-  constructor() { }
+  @Output() tap = new EventEmitter();
 
-  ngOnInit() {}
+  constructor() {}
 
+  onTap() {
+    this.tap.emit();
+  }
 }

@@ -1,6 +1,7 @@
 <div class="flip" [ngClass]="{ 'flip--rotate': _discover }">
   <canvas #confettiCanvas class="confetti"></canvas>
   <div class="flip__inner">
+    <!-- FRONT -->
     <div
       class="card-question flip__front folded folded--front"
       (click)="onFront()"
@@ -16,6 +17,8 @@
         </ion-card-content>
       </ion-card>
     </div>
+
+    <!-- BACK -->
     <div class="card-answer flip__back folded folded--back">
       <div class="card-answer__subtitle-box">
         <ion-card-subtitle class="card-answer__subtitle"

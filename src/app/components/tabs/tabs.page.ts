@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'mizik-tabs',
@@ -12,7 +12,7 @@ import { filter, map } from 'rxjs/operators';
 export class TabsPage {
   isPageInFavorites$: Observable<boolean>;
 
-  constructor(private router: Router, private nav: NavController) {}
+  constructor(private router: Router, private nav: NavigationService) {}
 
   ngOnInit() {
     this.isPageInFavorites$ = this.router.events.pipe(

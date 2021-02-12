@@ -12,3 +12,5 @@ export interface Trivia {
   question: string;
   answer: string;
 }
+
+export type Id = string;

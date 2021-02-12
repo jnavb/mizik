@@ -7,14 +7,14 @@ import {
   speciesToItemDetail,
   specieToItemList
 } from 'src/app/utils/mappers';
-import { ApolloWrapper } from '../apollo-wrapper';
+import { ApolloWrapperService } from '../apollo-wrapper.service';
 import { FetchEntityService } from './fetcher-factory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SepeciesFetcher implements FetchEntityService {
-  constructor(private apollo: ApolloWrapper) {}
+  constructor(private apollo: ApolloWrapperService) {}
 
   getListView() {
     return this.getList().pipe(

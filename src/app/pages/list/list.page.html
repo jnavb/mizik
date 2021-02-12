@@ -12,15 +12,21 @@
 <ion-content>
   <ng-container *ngIf="(result$ | async) as result">
     <ng-container *ngIf="result.data">
-      <ng-container *ngFor="let view of result.data">
+      <ion-virtual-scroll
+        [items]="result.data"
+        approxItemHeight="72px"
+        threshold="1000px"
+      >
         <app-item-list
+          *virtualItem="let view"
           [view]="{
-            title: view.title | entityTitlecase:view.entity,
-            subtitle: view.subtitle
-          }"
+          title: view.title | entityTitlecase:view.entity,
+          subtitle: view.subtitle
+        }"
           (click)="onDetail(view.id)"
+          style="height: 72px"
         ></app-item-list>
-      </ng-container>
+      </ion-virtual-scroll>
     </ng-container>
 
     <ng-container *ngIf="result.error">

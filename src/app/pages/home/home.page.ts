@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { of, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { delay, map, repeatWhen } from 'rxjs/operators';
 import { trivias } from 'src/app/data/trivia';
+import { NavigationService } from 'src/app/services/navigation.service';
 import { Entities, Trivia } from '../../models/util-types';
 import { pickRandom } from '../../utils/array';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +25,7 @@ export class HomePage {
     slidesOffsetAfter: 1
   };
 
-  constructor(private nav: NavController) {}
+  constructor(private nav: NavigationService) {}
 
   ngOnInit() {
     this.trivia$ = of(trivias).pipe(

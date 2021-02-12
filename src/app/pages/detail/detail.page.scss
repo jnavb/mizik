@@ -41,6 +41,10 @@ ion-fab {
 }
 
 .card-related {
+  &-box &:first-of-type {
+    margin-top: 12px;
+  }
+
   ion-card-header {
     display: flex;
     justify-content: space-between;
@@ -49,5 +53,54 @@ ion-fab {
   ion-icon {
     height: auto;
     font-size: 30px;
+  }
+}
+
+.card-main {
+  position: relative;
+  overflow: visible;
+}
+
+mizik-fab-love {
+  --size: 40px;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.fabs {
+  position: absolute;
+  left: 8px;
+  bottom: -16px;
+  z-index: 9;
+  display: flex;
+
+  &--no-img {
+    left: initial;
+    bottom: initial;
+    right: 14px;
+    top: 12px;
+  }
+}
+
+.related {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: visible;
+  margin-top: 10px;
+
+  ion-label {
+    align-self: flex-end;
+  }
+}
+
+.secondary-cards {
+  position: relative;
+
+  ion-card {
+    overflow: visible;
   }
 }

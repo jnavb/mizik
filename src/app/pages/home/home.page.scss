@@ -4,7 +4,6 @@ ion-row {
 
 ion-card {
   margin: 10px;
-  max-height: 200px;
 
   ion-card-title {
     font-size: 20px;
@@ -22,5 +21,20 @@ ion-slides {
   }
   ion-slide {
     width: auto;
+  }
+}
+
+.card {
+  &__main {
+    max-height: 200px;
+
+    ion-card-content {
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      max-height: 100px;
+    }
   }
 }
