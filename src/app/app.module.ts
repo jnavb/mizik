@@ -1,3 +1,4 @@
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { TitleCasePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -22,6 +23,7 @@ import { GraphQLModule } from './graphql.module';
   ],
   providers: [
     TitleCasePipe,
+    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
